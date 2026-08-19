@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta charset="utf-8"/>
+  <title>Leaderboard — GetFGV</title>
+  <meta name="description" content="Veja as 20 maiores pontuações globais do GetFGV. Desafie-se a entrar no ranking!"/>
+  <link rel="canonical" href="https://getfgv.com.br/leaderboard.html"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9879470203997450"
+     crossorigin="anonymous"></script>
+  <script>
+  // Aplica o tema (dark/light) ANTES do CSS ser processado, evita flash
+    (function () {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var isDark = saved ? (saved === 'dark') : prefersDark;
+      var root = document.documentElement;
+      root.classList.toggle('dark', isDark);
+      root.style.colorScheme = isDark ? 'dark' : 'light';
+    })();
+  </script>
+  <link href="style/site.css" rel="stylesheet"/>
+
+  <!-- (opcional) SEO básico -->
+  <meta property="og:title" content="Leaderboard — GetFGV"/>
+  <meta property="og:description" content="Top 20 pontuações globais do GetFGV."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://getfgv.com.br/leaderboard.html"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <img src="img/fgv-logo.jpg" alt="FGV" width="40" height="38" style="height:40px; width:auto; border-radius:8px; margin-right:8px;">
+      <span class="title">GetFGV</span>
+    </a>
+    <nav aria-label="Navegação principal" class="site-nav">
+      <a href="/" id="nav-inicio">Início</a>
+      <a href="/sobre.html" id="nav-sobre">Sobre</a>
+      <a href="/convite.html" id="nav-convite">Convite</a>
+      <a href="/politica.html" id="nav-priv">Privacidade</a>
+      <a href="/leaderboard.html" id="nav-leader" class="active">Leaderboard</a>
+      <a href="/contato.html" id="nav-contato">Contato</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema" title="Alternar tema" aria-pressed="false">
+        <span class="track"></span>
+        <span class="knob">
+    <!-- sol -->
+          <svg class="icon sun" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4.5V2m0 20v-2.5M4.5 12H2m20 0h-2.5M5.6 5.6 4 4m16 16-1.6-1.6M18.4 5.6 20 4M4 20l1.6-1.6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+           <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+         </svg>
+    <!-- lua -->
+         <svg class="icon moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.4A8.6 8.6 0 1 1 11.6 3a7 7 0 1 0 9.4 9.4Z" fill="currentColor"/>
+         </svg>
+        </span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h1>Ranking Global — Top 20</h1>
+    <p class="muted" style="margin:6px 0 0">
+      Veja as 20 maiores pontuações globais do GetFGV. Desafie-se a entrar no ranking!
+    </p>
+  </section>
+
+  <section class="card" id="leaderboard-card">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <h2 style="margin:0">Top 20</h2>
+      <button class="btn btn-outline" id="btnReload" type="button">Atualizar</button>
+    </div>
+
+    <!-- Cabeçalho da lista -->
+    <div style="display:flex; justify-content:space-between; margin-top:10px; font-weight:700; opacity:.8">
+      <div style="min-width:48px">Pos.</div>
+      <div style="flex:1">Jogador</div>
+      <div style="min-width:80px; text-align:right">Pontuação</div>
+    </div>
+
+    <ul id="lb-list" class="lb-list" style="margin-top:6px">
+      <li><span class="pos">—</span> <span class="name">Carregando…</span> <span class="score">—</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <small>© <span id="y"></span> GetFGV — Todos os direitos reservados.</small>
+    <nav>
+      <a href="/sobre.html">Sobre</a> ·
+      <a href="/convite.html">Convite</a> ·
+      <a href="/politica.html">Privacidade</a> ·
+      <a href="/leaderboard.html">Leaderboard</a> ·
+      <a href="/contato.html">Contato</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Supabase + script da página -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // 🔐 Mesmos valores que você usa no index.html
+  const SUPABASE_URL = "https://vpvmpmdjdswoyaknousr.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwdm1wbWRqZHN3b3lha25vdXNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkyOTc1OTMsImV4cCI6MjA3NDg3MzU5M30.RezEwSjR8PtotkSWwVX_XHreQ92ZyVfua1_lCyBwtrg";
+  const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const LIST = document.getElementById('lb-list');
+  const BTN = document.getElementById('btnReload');
+
+  async function fetchTopN(n=20){
+    if (!LIST) return;
+    // placeholder enquanto carrega
+    LIST.innerHTML = `<li><span class="pos">…</span> <span class="name">Carregando…</span> <span class="score">…</span></li>`;
+
+    const { data, error } = await sb
+      .from('leaderboard')
+      .select('name, score, created_at')
+      .order('score', { ascending:false })
+      .order('created_at', { ascending:true })
+      .limit(n);
+
+    if (error) {
+      console.error(error);
+      LIST.innerHTML = `<li><span class="pos">!</span> <span class="name">Erro ao carregar</span> <span class="score">—</span></li>`;
+      return;
+    }
+
+    if (!data || data.length === 0){
+      LIST.innerHTML = `<li><span class="pos">-</span> <span class="name">Sem registros ainda</span> <span class="score">—</span></li>`;
+      return;
+    }
+
+    LIST.innerHTML = data.map((r, i) =>
+      `<li>
+        <span class="pos rank-${i+1}">${i+1}º</span>
+        <span class="name">${escapeHTML(r.name || '').trim() || 'Anônimo'}</span>
+        <span class="score">${Number(r.score||0).toLocaleString('pt-BR')}</span>
+      </li>`
+    ).join('');
+  }
+
+  function escapeHTML(s){
+    return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=> fetchTopN(20));
+  if (BTN) BTN.addEventListener('click', ()=> fetchTopN(20));
+</script>
+<script src="js/site_common.js"></script>
+
+
+</body>
+</html>
