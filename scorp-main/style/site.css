@@ -1,0 +1,1029 @@
+/* ===== GetFGV — Estilo Padronizado ===== */
+:root {
+  /* ===== Tema Claro (default) ===== */
+  --fgv-azul: #004B9B;
+  --fgv-azul-escuro: #003a77;
+  --cinza: #f6f7f9;
+  --cinza-borda: #e5e7eb;
+  --texto: #111827;
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --radius: 14px;
+  --shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+/* ===== Tema Escuro ===== */
+:root.dark {
+  --bg: #1e1e1e;
+  --texto: #f3f4f6;
+  --cinza: #2a2a2a;
+  --cinza-borda: #3a3a3a;
+  --fgv-azul: #3b82f6; /* azul mais claro para contraste */
+  --muted: #9ca3af;
+  --shadow: 0 6px 20px rgba(255,255,255,.05);
+}
+
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height:1.6;
+  color:var(--texto);
+  background:var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container{
+  max-width: 920px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+a{color:var(--fgv-azul); text-decoration: none;}
+a:hover{text-decoration: underline;}
+
+/* ===== Header ===== */
+.site-header{
+  border-bottom:1px solid var(--cinza-borda);
+  background:#fff;
+}
+.site-header .wrap{
+  max-width: 920px; margin: 0 auto; padding: 14px 16px;
+  display:flex; align-items:center; justify-content: space-between; gap:12px; flex-wrap:wrap;
+}
+.brand{
+  display:flex; align-items:center; gap:10px;
+}
+.brand .logo{
+  width:36px; height:36px; border-radius:8px; background:var(--fgv-azul);
+  box-shadow: inset 0 0 0 3px #fff, 0 4px 14px rgba(0,0,0,.12);
+}
+.brand .title{
+  font-weight:800; letter-spacing:.2px; color:var(--fgv-azul);
+}
+
+/* Nav */
+.site-nav a{
+  font-weight:600;
+  padding:8px 10px;
+  border-radius:10px;
+}
+.site-nav a.active, .site-nav a:focus-visible{
+  background: var(--cinza);
+  outline: none;
+}
+
+/* ===== Cards ===== */
+.card{
+  background: var(--cinza);
+  border:1px solid var(--cinza-borda);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.card + .card{ margin-top: 16px; }
+
+.card h2{
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--fgv-azul);
+  letter-spacing: .2px;
+}
+.card h2 + *{ margin-top: 12px; }
+
+/* ===== Footer ===== */
+.site-footer{
+  border-top:1px solid var(--cinza-borda);
+  margin-top: 32px;
+  background:#fff;
+}
+.site-footer .wrap{
+  max-width: 920px; margin: 0 auto; padding: 18px 16px;
+  display:flex; align-items:center; justify-content: space-between; gap:12px; flex-wrap:wrap;
+  color: var(--muted);
+  font-size: 14px;
+}
+.site-footer nav a{ color: var(--fgv-azul); font-weight:600; }
+.site-footer small{ color: var(--muted); }
+
+/* Utilidades */
+.muted{ color: var(--muted) }
+.center{text-align:center}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px;
+  padding: 12px 16px;
+  border:0; border-radius:12px;
+  background: var(--fgv-azul);
+  color:white; font-weight:700;
+  cursor:pointer;
+  transition: transform .06s ease, filter .2s ease;
+  box-shadow: 0 8px 20px rgba(0,79,155,.18);
+}
+.btn:hover{ filter: brightness(1.05); }
+.btn:active{ transform: translateY(1px); }
+.btn-outline{
+  background:#fff; color: var(--fgv-azul); border:1px solid var(--fgv-azul);
+  box-shadow:none;
+}
+.btn-danger{ background:#f43f5e; box-shadow:0 8px 20px rgba(244,63,94,.2) }
+
+/* ===== Página do jogo (index) ===== */
+.heading{
+  display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+}
+.heading .title{
+  color: var(--fgv-azul);
+  margin: 0;
+}
+
+.tagline{
+  margin: 14px 0 20px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  color: var(--fgv-azul);
+}
+
+.game-intro{
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.game-explanation{
+  margin-top: 24px;
+  padding: 16px 18px;
+  background: var(--cinza);
+  border: 1px solid var(--cinza-borda);
+  border-left: 4px solid var(--fgv-azul);
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.scores-container .score-container, .scores-container .best-container{
+  background: #fff;
+  border:1px solid var(--cinza-borda);
+  border-radius: 10px;
+  padding: 6px 10px;
+  min-width: 64px;
+  text-align:center;
+  font-weight:700;
+  box-shadow: var(--shadow);
+}
+
+/* ===== Responsividade ===== */
+@media (max-width:560px){
+  .site-nav a{ padding:8px }
+  .heading{ gap:8px }
+}
+
+/* === Ajustes solicitados === */
+/* Contraste da "tabela" de pontos */
+.scores-container .score-container,
+.scores-container .best-container{
+  background: var(--fgv-azul) !important;
+  color: #fff !important;
+  border: 0 !important;
+  text-shadow: none !important;
+  box-shadow: 0 8px 18px rgba(0,79,155,.20) !important;
+}
+
+/* Centralizar o jogo */
+.game-container{ margin: 12px auto !important; }
+
+/* Área de botões do convite para o botão "Não" fugir */
+.btns{ position: relative; min-height: 96px; display:flex; gap:12px; flex-wrap:wrap; }
+.btns .btn-no{ z-index: 2; }
+
+
+/* --- Pontuação maior e mais legível --- */
+.scores-container{
+  display:flex; align-items:center; gap:14px;
+}
+.score-container, .best-container{
+  position: relative;
+  padding: 14px 18px 12px !important;
+  border-radius: 16px !important;
+  font-size: 28px !important;
+  line-height: 1 !important;
+  font-weight: 800 !important;
+  letter-spacing: .3px;
+}
+.score-container::after, .best-container::after{
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  content: "";
+}
+.score-container::after{ content: "PONTOS"; }
+.best-container::after{ content: "RECORDE"; }
+
+@media (min-width: 900px){
+  .score-container, .best-container{ font-size: 34px !important; padding: 18px 22px 14px !important; }
+  .score-container::after, .best-container::after{ font-size: 13px; top:-16px; }
+}
+
+
+/* --- Redefinição do estilo da pontuação --- */
+.scores-container{
+  display:flex; align-items:flex-start; gap:14px;
+}
+.score-container, .best-container{
+  background: var(--fgv-azul) !important;
+  color:#fff !important;
+  border-radius: 14px !important;
+  padding: 10px 18px !important;
+  font-weight:700 !important;
+  font-size:26px !important;
+  min-width:100px;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  box-shadow:0 4px 14px rgba(0,79,155,.25);
+}
+.score-container::before, .best-container::before{
+  content: attr(data-label);
+  display:block;
+  font-size:13px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:4px;
+}
+
+
+/* --- Altura fixa maior para blocos de pontuação --- */
+.score-container, .best-container{
+  min-height: 90px !important;
+  justify-content: center;
+}
+
+
+/* --- Largura fixa igual para blocos de pontuação --- */
+.score-container, .best-container{
+  width: 140px !important;
+}
+
+
+/* --- Reposicionamento da pontuação --- */
+.scores-container{
+  margin-top: 20px !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+  justify-content: flex-end;
+}
+
+
+/* ===== Leaderboard ===== */
+.lb-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lb-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* separa nome ↔ score */
+  padding: 8px 6px;
+  border-radius: 10px;
+  transition: background-color .15s ease;
+}
+
+.lb-list li:hover {
+  background: var(--cinza);
+}
+
+.lb-list .pos {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 13px;
+  color: var(--muted);
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+/* Medalhas para o pódio */
+.lb-list .pos.rank-1 {
+  background: linear-gradient(180deg, #ffdf8a, #f5a623);
+  color: #5c3d00;
+  box-shadow: 0 2px 8px rgba(245, 166, 35, .4);
+}
+.lb-list .pos.rank-2 {
+  background: linear-gradient(180deg, #eef1f4, #b9c0c9);
+  color: #33383e;
+  box-shadow: 0 2px 8px rgba(150, 160, 170, .35);
+}
+.lb-list .pos.rank-3 {
+  background: linear-gradient(180deg, #e6ac7c, #c67c40);
+  color: #3a2000;
+  box-shadow: 0 2px 8px rgba(198, 124, 64, .35);
+}
+
+.lb-list .name {
+  flex: 1; /* ocupa o espaço do meio */
+  padding: 0 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lb-list li:nth-child(-n+3) .name {
+  font-weight: 700;
+}
+
+.lb-list .score {
+  font-weight: 600;
+  min-width: 60px;   /* garante alinhamento em coluna */
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ===== MOBILE LAYOUT FIX ===== */
+@media (max-width: 560px){
+
+  /* 1) Container ocupa toda a largura útil (sem “sobras” nas laterais) */
+  .container{
+    width: 94vw !important;
+    max-width: 94vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* 2) Badges lado a lado e centralizados */
+  .heading{
+    align-items: center !important;
+  }
+  .scores-container{
+    display: flex !important;
+    flex-wrap: nowrap !important;          /* não quebra linha */
+    justify-content: center !important;     /* centraliza no container */
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .scores-container > .score-container,
+  .scores-container > .best-container{
+    flex: 1 1 0 !important;                 /* dois itens dividem o espaço */
+    min-width: 0 !important;                /* permite encolher sem vazar */
+    max-width: 48% !important;              /* garante “dois por linha” */
+    padding: 12px 16px !important;
+    min-height: 82px !important;
+    border-radius: 16px !important;
+    text-align: center !important;
+  }
+  .scores-container > .score-container::before,
+  .scores-container > .best-container::before{
+    font-size: 12px !important;
+    margin-bottom: 4px !important;
+  }
+
+  /* 3) Game board centralizado e encaixado */
+  .game-container{
+    width: 280px !important;                /* largura “base” do 2048 */
+    margin: 16px auto !important;           /* centraliza horizontalmente */
+    transform-origin: top center !important;
+    display: block !important;
+  }
+  /* Escala para caber no viewport sem sair do container */
+  @media (max-width: 560px) and (min-width: 401px){
+    .game-container{ transform: scale(0.86); }
+  }
+  @media (max-width: 400px){
+    .game-container{ transform: scale(0.74); }
+  }
+}
+/* ====== LANDSCAPE (celular deitado) ====== */
+@media (max-width: 900px) and (orientation: landscape){
+
+  /* container usa 94% e fica centralizado */
+  .container{
+    width: 94vw !important;
+    max-width: 94vw !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* badges lado a lado e centralizados */
+  .heading{ align-items: center !important; }
+  .scores-container{
+    justify-content: center !important;
+    gap: 12px !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+  }
+  .scores-container > .score-container,
+  .scores-container > .best-container{
+    flex: 0 1 240px !important;    /* largura confortável no landscape */
+    max-width: 48% !important;
+    min-width: 0 !important;
+  }
+
+  /* tabuleiro centralizado e sem sobra */
+  .game-container{
+    width: 280px !important;                /* largura “base” do 2048 */
+    margin: 16px auto !important;           /* centraliza horizontalmente */
+    transform-origin: top center !important;
+    display: block !important;
+  }
+
+  .grid-container,
+  .tile-container{ margin: 0 auto !important; display:block !important; }
+  .grid-container{ background-color:#9e9e9e !important; border-radius:12px !important; }
+}
+
+/* Opcional: se a altura estiver MUITO curta (ex.: < 420px), reduz um pouco mais */
+@media (max-height: 420px) and (orientation: landscape){
+  .game-container{ transform: translateX(-50%) scale(0.74) !important; }
+}
+/* =========================
+   DARK MODE — REFINOS
+   ========================= */
+:root.dark{
+  /* Paleta mais agradável e homogênea */
+  --bg: #0f141a;               /* fundo de página */
+  --cinza: #161b22;            /* cards/superfícies */
+  --cinza-borda: #232a33;      /* linhas e divisores sutis */
+  --texto: #e7edf3;            /* texto principal */
+  --muted: #a5b1bd;            /* texto secundário */
+  --fgv-azul: #4aa3ff;         /* realce (azul levemente aceso) */
+  --shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+/* Header e footer sem “borda artificial” */
+:root.dark .site-header,
+:root.dark .site-footer{
+  background: var(--cinza);
+  border-color: rgba(255,255,255,.06);
+}
+
+/* Cards com elevação suave e borda discreta */
+:root.dark .card{
+  background: var(--cinza);
+  border-color: rgba(255,255,255,.06);
+  box-shadow: var(--shadow);
+}
+
+/* Links com contraste e foco melhor */
+:root.dark a{ color: var(--fgv-azul); }
+:root.dark a:hover{ filter: brightness(1.1); }
+
+/* Botões respeitam o tema */
+:root.dark .btn{ box-shadow: 0 10px 24px rgba(0,0,0,.35); }
+:root.dark .btn-outline{
+  background: transparent;
+  color: var(--fgv-azul);
+  border-color: rgba(255,255,255,.18);
+}
+
+/* Títulos e textos “apagados” do 2048 (corrige baixa opacidade) */
+:root.dark .game-intro,
+:root.dark .game-explanation{ 
+  color: var(--texto) !important;
+  opacity: .92 !important;
+}
+:root.dark .important{ color: #ffffff !important; }
+
+/* Divisores/HR discretos */
+:root.dark hr{ 
+  border: 0; height: 1px; 
+  background: rgba(255,255,255,.08);
+}
+
+/* Placas de pontuação legíveis no escuro */
+:root.dark .scores-container .score-container,
+:root.dark .scores-container .best-container{
+  background: #2563eb !important;     /* azul consistente */
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(37,99,235,.35) !important;
+}
+
+
+/* Leaderboard — deixa a coluna de score mais “presente” */
+:root.dark .lb-list .score{ color:#f1f5f9; }
+:root.dark .lb-list li:hover{ background: rgba(255,255,255,.05); }
+
+/* Navegação ativa no escuro */
+:root.dark .site-nav a.active{ background: rgba(255,255,255,.06); }
+/* =========================
+   DARK MODE — layout “escuro elegante”
+   ========================= */
+
+/* Fundo geral escuro (página) */
+:root.dark body{
+  background: #0f141a; /* fundo mais profundo */
+}
+
+/* Dark mode: container escuro só na home (index, que usa DIV) */
+:root.dark div.container{
+  background:#121820 !important;
+  border:1px solid rgba(255,255,255,.06) !important;
+  border-radius:14px !important;
+  box-shadow:0 10px 30px rgba(0,0,0,.45) !important;
+}
+
+/* Dark mode: nas páginas que usam MAIN.container, não aplicar fundo */
+:root.dark main.container{
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+
+/* Cards com UMA variação de tom dentro do container */
+:root.dark .card{
+  background: #161b22 !important;                    /* um meio-tom acima do container */
+  border-color: rgba(255,255,255,.08) !important;
+  box-shadow: 0 10px 26px rgba(0,0,0,.38) !important;
+}
+
+/* Header/Footer coerentes e sem bordas “gritando” */
+:root.dark .site-header,
+:root.dark .site-footer{
+  background: #121820 !important;
+  border-color: rgba(255,255,255,.06) !important;
+}
+
+/* Scores continuam legíveis no dark (sem mexer no tabuleiro) */
+:root.dark .scores-container .score-container,
+:root.dark .scores-container .best-container{
+  background: #2563eb !important;
+  color: #fff !important;
+  box-shadow: 0 10px 24px rgba(37,99,235,.35) !important;
+}
+/* Forçar mensagem de Game Over a ser igual em ambos os temas */
+:root.dark .game-message {
+  background: rgba(238, 228, 218, .73) !important; /* bege translúcido original */
+  color: #776e65 !important;                       /* marrom original */
+  text-shadow: none !important;
+  border: none !important;
+}
+:root.dark .game-message p {
+  color: #776e65 !important; /* garante que o texto interno (Game over!) siga igual */
+}
+:root.dark .game-message .lower a {
+  background: #8f7a66 !important; /* botão marrom */
+  color: #f9f6f2 !important;      /* texto branco */
+
+}
+/* Remove labels duplicados fora do badge */
+.scores-container .score-container::after,
+.scores-container .best-container::after {
+  content: none !important;
+}
+/* Corrigir botão de compartilhamento no modo escuro */
+:root.dark .btn {
+  color: #ffffff !important;   /* força texto branco */
+}
+
+:root.dark .btn-outline {
+  background: transparent !important;
+  color: var(--fgv-azul) !important;
+  border: 1px solid var(--fgv-azul) !important;
+}
+/* Corrige faixa branca no final da página (iOS/Safari) */
+html{
+  background: var(--bg);     /* garante fundo do root */
+  min-height: 100%;
+}
+body{
+  background: var(--bg);     /* já tinha, mas reforçamos */
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;     /* permite “colar” o footer no fim */
+}
+.site-footer{
+  margin-top: auto;           /* empurra o footer pro rodapé se o conteúdo for curto */
+}
+
+/* Em modo escuro, garante raiz escura também */
+:root.dark html,
+:root.dark body{
+  background: #0f141a;
+}
+
+/* (opcional) evita scroll lateral que pode revelar áreas sem pintura */
+html, body{
+  overflow-x: hidden;
+}
+/* Container principal da home (modo claro): remove a borda azul/cinza
+   antiga do template original do 2048 e aplica o visual do site */
+div.container{
+  border: 1px solid var(--cinza-borda);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+/* === Toggle com BORDA DEGRADÊ arredondada (sem border-image) === */
+.theme-toggle{
+  --w: 56px;         /* largura total */
+  --h: 30px;         /* altura total  */
+  --bw: 2px;         /* espessura da borda */
+  --pad: 2px;        /* respiro interno p/ a bolinha */
+
+  position: relative;
+  width: var(--w);
+  height: var(--h);
+  border-radius: 999px;
+  border: var(--bw) solid transparent;   /* borda "vazia" */
+  padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; outline: none; -webkit-tap-highlight-color: transparent;
+  overflow: hidden;                       /* clippa tudo no raio */
+
+  /* 2 backgrounds:
+     - camada 1 (padding-box): transparente (deixa a trilha aparecer)
+     - camada 2 (border-box):  degradê que desenha a borda arredondada
+  */
+  background:
+    linear-gradient(#0000, #0000) padding-box,
+    linear-gradient(180deg,#ffd08a,#ff8a5c) border-box;   /* modo claro */
+}
+/* modo escuro: borda acompanha o degradê azul da bolinha */
+:root.dark .theme-toggle{
+  background:
+    linear-gradient(#0000, #0000) padding-box,
+    linear-gradient(180deg,#6bb2ff,#4b7bff) border-box;
+}
+.theme-toggle .track{
+  position: absolute; inset: 0; border-radius: inherit;
+  background: linear-gradient(90deg,#ffb86c,#ff6b6b);
+  opacity: .22; transition: background .3s, opacity .3s;
+}
+:root.dark .theme-toggle .track{
+  background: linear-gradient(90deg,#4aa3ff,#5f5cff); opacity: .28;
+}
+.theme-toggle .knob {
+  position: absolute;
+  top: -1px; /* encosta quase na borda */
+  left: -0.5px;
+  width: calc(var(--h) - 1px);
+  height: calc(var(--h) - 1px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(180deg,#ffd08a,#ff8a5c);
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  transition: transform .28s cubic-bezier(.4,0,.2,1), background .3s;
+}
+
+:root.dark .theme-toggle .knob {
+  background: linear-gradient(180deg,#6bb2ff,#4b7bff);
+  transform: translateX(calc(var(--w) - var(--h)));
+}
+
+.theme-toggle .icon{ width: 16px; height: 16px; color: #fff }
+.theme-toggle .icon.moon{ display: none; }
+:root.dark .theme-toggle .icon.sun{ display: none; }
+:root.dark .theme-toggle .icon.moon{ display: block; }
+
+/* opcional: cor do contorno do botão de acordo com o tema */
+.theme-toggle{ color: var(--fgv-azul); }
+:root.dark .theme-toggle{ color: #4aa3ff; }
+
+/* Nav sempre alinhada verticalmente */
+.site-header .site-nav{
+  display:flex;
+  align-items:center;
+  gap:8px;            /* espaço entre os links */
+}
+
+/* Espaço do toggle em relação aos links */
+.theme-toggle{ margin-left: 10px; vertical-align: middle; }
+
+
+/* Transição suave ao alternar o tema */
+html, body, .card, .site-header, .site-footer, .grid-container, .grid-cell{
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+/* Tipografia do header em todas as páginas */
+.site-header { font-size: 16px; }
+
+.site-header .brand .title{
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+/* Navegação: quebra de linha natural (sem linhas "fantasmas") */
+.site-header .site-nav{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 18px;
+}
+
+.site-header .site-nav a{
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+@media (max-width: 520px){
+  .site-header .site-nav a{
+    font-size: 15px;
+    padding: 8px 10px;
+  }
+}
+/* Faz o wrapper da página ignorar as larguras do main.css (.container do 2048) */
+body > div.container {
+  width: auto !important;              /* desfaz width fixa do main.css */
+  max-width: 920px !important;         /* sua largura de página */
+  margin: 28px auto !important;
+  padding: 0 16px !important;
+}
+
+/* Dark mode desse wrapper (se você usa) */
+:root.dark body > div.container{
+  background: #121820 !important;
+  border: 1px solid rgba(255,255,255,.06) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45) !important;
+}
+
+/* ====== Barra de progresso (seta) ====== */
+.fgv-progress{
+  margin: 16px 0 24px;
+  overflow: hidden;
+}
+.fgv-progress__rail{
+  position: relative;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,#ffe6ba,#ffd1c3);
+  border: 3px solid #fff;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15) inset;
+}
+
+/* cabeça da seta */
+.fgv-progress__rail::after{
+  content:"";
+  position:absolute; right:-30px; top:50%;
+  width: 60px; height: 60px; transform: translateY(-50%) rotate(0.0001deg);
+  background: inherit;
+  border: 3px solid #fff; border-left: none;
+  border-radius: 0 999px 999px 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,.15) inset;
+}
+
+/* trilho interno com chips */
+.fgv-progress__list{
+  display:flex; gap: 10px;
+  overflow-x: auto; overflow-y: hidden;
+  scrollbar-width: thin;
+}
+.fgv-progress__list::-webkit-scrollbar{ height: 6px }
+.fgv-progress__list::-webkit-scrollbar-thumb{ background: rgba(0,0,0,.15); border-radius: 999px }
+
+/* cada “bolinha” (logo) */
+.fgv-progress__item{
+  flex: 0 0 auto;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #fff; border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,.1);
+  display:grid; place-items:center;
+  position: relative;
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease, opacity .2s ease;
+}
+.fgv-progress__item img{
+  width: 44px; height: 44px; object-fit: contain; border-radius: 50%;
+}
+
+/* bloqueada: meio “cinza” + cadeado opcional */
+.fgv-progress__item.is-locked{
+  filter: grayscale(100%) contrast(.7) brightness(.9);
+  opacity: .6;
+}
+.fgv-progress__item.is-locked::after{
+  content:"🔒";
+  position: absolute; right: -6px; top: -6px; font-size: 14px;
+}
+
+/* desbloqueio com animação suave */
+.fgv-progress__item.just-unlocked{
+  animation: fgv-pop .5s ease;
+}
+@keyframes fgv-pop{
+  0%{ transform: scale(.8) }
+  60%{ transform: scale(1.1) }
+  100%{ transform: scale(1) }
+}
+
+/* dark mode: trilho mais escuro mas mantem vibe */
+:root.dark .fgv-progress__rail{
+  background: linear-gradient(90deg,#2a3646,#202b3a);
+  border-color: rgba(255,255,255,.85);
+}
+:root.dark .fgv-progress__rail::after{
+  background: linear-gradient(90deg,#2a3646,#202b3a);
+  border-color: rgba(255,255,255,.85);
+}
+
+/* 1) MODO CLARO: trilho branco, sem gradiente */
+:root:not(.dark) .fgv-progress__rail{
+  background:#fff !important;
+  border:1px solid #e9edf2 !important;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06) inset;  /* bem sutil */
+}
+
+/* 2) Remove a “ponta/retângulo” da direita (aquela seta) */
+.fgv-progress__rail::after{ display:none !important; }
+
+/* opcional: dar um respiro */
+.fgv-progress{ margin: 16px 0 20px; }
+
+/* bolinhas ficam com uma borda leve no fundo branco */
+:root:not(.dark) .fgv-progress__item{
+  border-color:#f3f5f7 !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,.05);
+}
+
+/* 3) BLOQUEADA = “não identificado” (esconde logo e mostra “?”) */
+.fgv-progress__item.is-locked{
+  filter:none !important;           /* remove o grayscale antigo */
+  opacity:1 !important;             /* volta a opacidade */
+  position:relative;
+}
+.fgv-progress__item.is-locked img{
+  opacity:0;                         /* esconde a logo */
+}
+
+/* círculo com “?” */
+.fgv-progress__item.is-locked::before{
+  content:"?";                       /* ícone de não identificado */
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  border-radius:50%;
+  display:grid; place-items:center;
+  font-weight:800; font-size:22px;
+  color:#9aa4b2;
+  background: radial-gradient(ellipse at 30% 30%, #f2f5f8, #e7ebf1);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.08);
+}
+
+/* dark mode mantém seu visual anterior (sem precisar mudar nada) */
+/* mas se quiser o “?”” no dark também, descomente este bloco:
+:root.dark .fgv-progress__item.is-locked::before{
+  color:#c8d2e0;
+  background: radial-gradient(ellipse at 30% 30%, #2b3746, #1f2937);
+  box-shadow: inset 0 2px 6px rgba(0,0,0,.25);
+}
+*/
+/* faz a logo preencher todo o círculo */
+.fgv-progress__item img{
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  object-fit: cover;   /* garante preenchimento */
+}
+/* animação de brilho permanente */
+@keyframes fgv-glow {
+  0%   { box-shadow: 0 0 4px rgba(0,150,255,0.6), 0 0 8px rgba(0,150,255,0.4); }
+  50%  { box-shadow: 0 0 12px rgba(0,170,255,0.9), 0 0 24px rgba(0,170,255,0.7); }
+  100% { box-shadow: 0 0 4px rgba(0,150,255,0.6), 0 0 8px rgba(0,150,255,0.4); }
+}
+
+.fgv-progress__item.fgv-unlocked {
+  animation: fgv-glow 1.5s infinite ease-in-out;
+  border-color: #3ba9ff !important;  /* azul mais vibrante */
+}
+
+/* ===== Ajustes SOMENTE para celular ===== */
+/* Esconde a barra de progresso no celular */
+@media (max-width: 520px) {
+  .fgv-progress {
+    display: none !important;
+  }
+}
+/* ===== Seletor de Tema ===== */
+.theme-picker{ position: relative; display:inline-block; }
+.theme-button{ padding:8px 12px; font-weight:700; }
+.theme-menu{
+  position:absolute; right:0; top:calc(100% + 8px);
+  min-width: 220px;
+  background:#fff; border:1px solid var(--cinza-borda); border-radius:12px;
+  box-shadow: var(--shadow);
+  padding:6px;
+  z-index: 50;
+}
+.theme-option{
+  width:100%;
+  display:block;
+  text-align:left;
+  border:0; background:transparent;
+  padding:10px 12px; border-radius:10px; cursor:pointer; font:inherit; color:var(--texto);
+}
+.theme-option:hover{ background: var(--cinza); }
+.theme-option.is-active{ font-weight:800; }
+:root.dark .theme-menu{ background: var(--cinza); border-color:#2b2f36; }
+:root.dark .theme-option:hover{ background: rgba(255,255,255,.06); }
+
+/* ===== Botão + posição do seletor de tema no header ===== */
+/* O picker fica em fluxo normal, ao lado do toggle de claro/escuro —
+   sem position:absolute, então não precisa de padding extra no header. */
+.site-header .theme-picker{
+  display: inline-flex;
+}
+
+.site-header .theme-button{
+  min-width: 80px;
+  height: 32px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 2px solid #4a90ff;
+  color: #4a90ff;
+  background: transparent;
+  transition: background .25s ease, transform .25s ease;
+}
+.site-header .theme-button:hover{
+  background: rgba(74,144,255,.1);
+  transform: translateY(-1px);
+}
+:root.dark .site-header .theme-button{
+  border-color: #5ea0ff;
+  color: #5ea0ff;
+}
+
+.theme-button .arrow{
+  font-size: 12px;
+  transition: transform .2s ease;
+}
+.theme-picker.open .arrow{ transform: rotate(180deg); }
+
+/* ===== Modal de nome para o leaderboard (substitui window.prompt) ===== */
+.gfv-modal-backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 1000;
+  animation: gfv-fade-in .18s ease;
+}
+@keyframes gfv-fade-in{ from{ opacity: 0 } to{ opacity: 1 } }
+
+.gfv-modal{
+  width: 100%;
+  max-width: 380px;
+  background: var(--bg);
+  color: var(--texto);
+  border-radius: var(--radius);
+  border: 1px solid var(--cinza-borda);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  padding: 24px;
+  animation: gfv-pop-in .2s ease;
+}
+@keyframes gfv-pop-in{ from{ transform: scale(.92); opacity: 0 } to{ transform: scale(1); opacity: 1 } }
+
+.gfv-modal h3{ margin: 0 0 6px; color: var(--fgv-azul); }
+.gfv-modal p{ margin: 0 0 16px; color: var(--muted); font-size: 14px; }
+.gfv-modal input{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--cinza-borda);
+  background: var(--bg);
+  color: var(--texto);
+  font: inherit;
+  outline: none;
+}
+.gfv-modal input:focus{ border-color: var(--fgv-azul); }
+.gfv-modal .gfv-modal-actions{
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+

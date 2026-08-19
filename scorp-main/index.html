@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta charset="utf-8" />
+    <title>GetFGV!</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-W2JNSTKD57"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-W2JNSTKD57');
+    </script>
+
+    <link rel="canonical" href="https://getfgv.com.br/">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9879470203997450"
+     crossorigin="anonymous"></script>
+
+    <!-- 🔹 Meta description e palavras-chave para SEO -->
+    <meta name="description" content="GetFGV é o jogo 2048 das faculdades. Combine universidades como USP, IBMEC, Insper e outras até chegar na FGV! Um jogo divertido e desafiador inspirado no clássico 2048." />
+    <meta name="keywords" content="get fgv, get insper, get usp, get espm, getfgv, getinsper, getusp, getespm, jogo fgv, jogo insper, jogo usp, jogo espm, getgv, get gv, jogo gv, 2048 das faculdades, jogo universidades, jogo vestibular, game FGV, faculdade game, jogo educacional, jogo de faculdades" />
+    <meta name="author" content="Caio Salfatis" />
+    <script>
+  // Aplica o tema (dark/light) ANTES do CSS ser processado
+      (function () {
+        var saved = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = saved ? (saved === 'dark') : prefersDark;
+
+        var root = document.documentElement;
+        root.classList.toggle('dark', isDark);
+
+    // Ajuda o navegador a pintar controles/srollbar coerentes com o tema
+        root.style.colorScheme = isDark ? 'dark' : 'light';
+      })();
+    </script>
+
+
+    <link href="style/main.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style/site.css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="meta/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+  </head>
+  <body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="img/fgv-logo.jpg" alt="FGV" width="40" height="38" style="height:40px; width:auto; border-radius:8px; margin-right:8px;"><span class="title">GetFGV</span></a>
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a href="/index.html" id="nav-inicio" class="active">Início</a>
+      <a href="/sobre.html" id="nav-sobre">Sobre</a>
+      <a href="/convite.html" id="nav-convite">Convite</a>
+      <a href="/politica.html" id="nav-priv">Privacidade</a>
+      <a href="/leaderboard.html" id="nav-leader">Leaderboard</a>
+      <a href="/contato.html" id="nav-contato">Contato</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema" title="Alternar tema" aria-pressed="false">
+        <span class="track"></span>
+        <span class="knob">
+    <!-- sol -->
+          <svg class="icon sun" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 4.5V2m0 20v-2.5M4.5 12H2m20 0h-2.5M5.6 5.6 4 4m16 16-1.6-1.6M18.4 5.6 20 4M4 20l1.6-1.6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/>
+           <circle cx="12" cy="12" r="4.5" fill="currentColor"/>
+         </svg>
+    <!-- lua -->
+         <svg class="icon moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 12.4A8.6 8.6 0 1 1 11.6 3a7 7 0 1 0 9.4 9.4Z" fill="currentColor"/>
+         </svg>
+        </span>
+      </button>
+      
+        <!-- Dropdown de temas -->
+      <div class="theme-picker" id="theme-picker" aria-label="Selecionar tema">
+        <button class="btn btn-outline theme-button" type="button" id="btn-theme">
+          <span id="theme-label">Tema</span>
+          <span class="arrow">▼</span>
+        </button>
+      <div class="theme-menu" id="theme-menu" hidden></div>
+      </div>
+
+    </nav>
+  </div>
+</header>
+
+    <div class="container">
+      <div class="heading">
+        <h1 class="title">Get<span id="theme-title">FGV</span></h1>
+        <div class="scores-container">
+          <div class="score-container" data-label="Pontos">0</div>
+          <div class="best-container" data-label="Recorde">0</div>
+        </div>
+      </div>
+      <p class="tagline">#PrimeiraOpção</p>
+
+      <section class="card" id="leaderboard-card">
+        <h2>Top 5 Global</h2>
+        <ul id="lb-list" class="lb-list"></ul>
+      </section>
+
+      <p class="game-intro">
+        Combine outras faculdades para atingir a tão desejada <strong id="goal-name">FGV</strong>!
+      </p>
+
+
+
+
+      <div class="game-container">
+        <div class="game-message">
+          <p></p>
+          <div class="lower">
+            <a class="keep-playing-button">Siga jogando</a>
+            <a class="retry-button">Tente novamente</a>
+          </div>
+        </div>
+
+        <div class="grid-container">
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+          <div class="grid-row">
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+            <div class="grid-cell"></div>
+          </div>
+        </div>
+
+        <div class="tile-container"></div>
+      </div>
+      <section class="fgv-progress" aria-label="Progresso de faculdades">
+        <div class="fgv-progress__rail">
+          <ul class="fgv-progress__list" id="fgv-progress-list"></ul>
+        </div>
+      </section>
+
+      <p class="game-explanation">
+        <strong class="important">Como jogar:</strong> Use as
+        <strong>setas</strong> para deslizar as peças pelo tabuleiro. Sempre que figuras da
+         <strong>mesma faculdade</strong> se encontrarem, elas se unem e fomam uma nova peça, evoluindo para o próximo nível!
+        <br /><strong class="important">Nota:</strong> A sequência das faculdades
+        não é um ranking oficial, é só a lógica do jogo. Mas fique à vontade para
+        entender como quiser.
+      </p>
+      <hr />
+      <p>
+        Criado por
+        <a class="link-dourado" href="https://www.linkedin.com/in/caio-salfatis-084958373/">Caio Salfatis</a>
+      </p>
+      <hr />
+      <p>
+        Inspiração:
+        <a class="link-azul" href="https://mitchgu.github.io/GetMIT/">GetMIT by Mitchell Gu</a>
+      </p>
+    </div>
+
+    <script src="js/animframe_polyfill.js"></script>
+    <script src="js/keyboard_input_manager.js"></script>
+    <script src="js/html_actuator.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/tile.js"></script>
+    <script src="js/local_score_manager.js"></script>
+    <script src="js/game_manager.js"></script>
+    <script src="js/themes.js"></script>
+    <script src="js/application.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+  // 🔐 cole os valores do seu projeto
+      const SUPABASE_URL = "https://vpvmpmdjdswoyaknousr.supabase.co";
+      const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZwdm1wbWRqZHN3b3lha25vdXNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkyOTc1OTMsImV4cCI6MjA3NDg3MzU5M30.RezEwSjR8PtotkSWwVX_XHreQ92ZyVfua1_lCyBwtrg";
+      window.sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
+    <script src="js/leaderboard.js"></script>
+ 
+  
+
+  
+<footer class="site-footer">
+  <div class="wrap">
+    <small>© <span id="y"></span> GetFGV — Todos os direitos reservados.</small>
+    <nav>
+      <a href="/sobre.html">Sobre</a> ·
+      <a href="/convite.html">Convite</a> ·
+      <a href="/politica.html">Privacidade</a> ·
+      <a href="/leaderboard.html">Leaderboard</a> ·
+      <a href="/contato.html">Contato</a>
+    </nav>
+  </div>
+</footer>
+<script src="js/site_common.js"></script>
+
+<script>
+/** ===== Progress Bar por Tema ===== */
+const $list = document.getElementById('fgv-progress-list');
+
+function renderProgressByTheme(unlockedIndex){
+  const theme = window.GetFGVThemes.getCurrentTheme();
+  $list.innerHTML = "";
+  theme.items.forEach((f, i) => {
+    const li = document.createElement('li');
+    li.className = 'fgv-progress__item' + (i > unlockedIndex ? ' is-locked' : '');
+    li.title = f.nome;
+    const img = document.createElement('img');
+    img.alt = f.nome; img.src = f.img;
+    li.appendChild(img);
+    $list.appendChild(li);
+  });
+}
+
+function saveUnlocked(idx){
+  const themeId = window.GetFGVThemes.getCurrentTheme().id;
+  localStorage.setItem(`unlock_idx_${themeId}`, String(idx));
+}
+function loadUnlocked(){
+  const themeId = window.GetFGVThemes.getCurrentTheme().id;
+  return Number(localStorage.getItem(`unlock_idx_${themeId}`) ?? 0);
+}
+
+let unlockedIdx = loadUnlocked();
+renderProgressByTheme(unlockedIdx);
+
+/** ===== API pública para o jogo avisar progresso ===== */
+window.Progression = {
+  setByValue(tileValue){
+    const theme = window.GetFGVThemes.getCurrentTheme();
+    let idx = -1;
+    for (let i=0;i<theme.items.length;i++){
+      if (tileValue >= theme.items[i].id) idx = i;
+    }
+    if (idx > unlockedIdx){
+      unlockedIdx = idx;
+      saveUnlocked(unlockedIdx);
+      renderProgressByTheme(unlockedIdx);
+      const last = $list.children[unlockedIdx];
+      if (last){ last.classList.add('just-unlocked'); setTimeout(()=>last.classList.remove('just-unlocked'), 600); }
+    }
+  }
+};
+
+</script>
+
+
+<script>
+// Monta o menu de temas dinamicamente
+  (function(){
+    const picker = document.getElementById('theme-picker');
+    const menu   = document.getElementById('theme-menu');
+    const btn    = document.getElementById('btn-theme');
+    if(!picker || !menu || !btn || !window.GetFGVThemes) return;
+
+    function renderMenu(){
+      const { THEMES, getCurrentTheme, setSavedThemeId } = window.GetFGVThemes;
+      const cur = getCurrentTheme().id;
+      menu.innerHTML = Object.values(THEMES).map(t => `
+      <button type="button" class="theme-option ${t.id===cur?'is-active':''}" data-id="${t.id}">
+          ${t.label}
+      </button>
+      `).join('');
+
+    // Atualiza o texto do botão com o nome do tema atual
+      const labelEl = document.getElementById('theme-label');
+      if (labelEl) labelEl.textContent = getCurrentTheme().label;
+    }
+
+    function openMenu(){
+      renderMenu();
+      menu.hidden = false;
+      picker.classList.add('open');
+      document.addEventListener('click', onDocClick);
+    }
+
+    function closeMenu(){
+      menu.hidden = true;
+      picker.classList.remove('open');
+      document.removeEventListener('click', onDocClick);
+    }
+
+    function onDocClick(e){ if(!picker.contains(e.target)) closeMenu(); }
+
+    btn.addEventListener('click', (e)=> {
+      e.stopPropagation();
+      if(menu.hidden) openMenu(); else closeMenu();
+    });
+
+    menu.addEventListener('click', (e)=>{
+      const b = e.target.closest('.theme-option');
+      if(!b) return;
+      const id = b.getAttribute('data-id');
+      const { getCurrentTheme, setSavedThemeId } = window.GetFGVThemes;
+      const old = getCurrentTheme().id;
+      if(id !== old){
+        setSavedThemeId(id);
+        location.reload();
+      } else {
+        closeMenu();
+      }
+    });
+
+  // Atualiza o nome do tema no carregamento inicial
+  const labelEl = document.getElementById('theme-label');
+  if (labelEl) labelEl.textContent = window.GetFGVThemes.getCurrentTheme().label;
+
+})();
+
+</script>
+
+<!-- 🔹 Script para atualizar dinamicamente o nome da faculdade final -->
+<script>
+  (function(){
+    if (window.GetFGVThemes) {
+      const t = window.GetFGVThemes.getCurrentTheme();
+      const el = document.getElementById('goal-name');
+      if (el && t && t.goalName) {
+        el.textContent = t.goalName;
+      }
+    }
+  })();
+</script>
+
+<script>
+  (function(){
+    if (window.GetFGVThemes) {
+      const t = window.GetFGVThemes.getCurrentTheme();
+      const el = document.getElementById('theme-title');
+      if (el && t && t.goalName) {
+        el.textContent = t.goalName;
+      }
+    }
+  })();
+</script>
+
+</body>
+</html>
